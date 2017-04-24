@@ -29,8 +29,18 @@ function createDonate() {
     noDonate.setAttribute('class', 'noDonate');
     noDonate.innerHTML = 'No';
     document.body.appendChild(noDonate);
-//    noDonate.addEventListener('click', noDonateFunction);
+    noDonate.addEventListener('click', noDonateFunction);
 }
+function noDonateFunction () {
+    var pleaseDonate = document.createElement('div');    
+    document.body.appendChild(pleaseDonate);
+      var sadface = document.createElement('img');
+    sadface.setAttribute('class', 'sadface');
+        sadface.setAttribute('src', 'sadface.jpg');
+    pleaseDonate.appendChild(sadface);
+}
+
+
 
 function startDonate() {
     var donatingForm = document.createElement('div');
@@ -58,6 +68,7 @@ function startDonate() {
                     printReceipt.innerHTML = firstName.value + ' ' + lastName.value + ': Donated Amount: $' + donateAmount.value;
                     printReceipt.style.color = 'brown';
                     printReceipt.style.background = 'cyan';
+                    printReceipt.style.textDecoration = 'underline';
                     printReceipt.setAttribute('class', 'printReceipt');
                     receipt.appendChild(printReceipt);
                     var imagebar = document.createElement('img');
