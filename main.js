@@ -7,6 +7,7 @@ var enterPassword = document.getElementById('inputPassword4');
 var createbutton = document.getElementById('createbutton');
 var messageboard= document.getElementById('messageboard');
 
+
 createbutton.addEventListener('click', function() {
     messageboard.innerHTML = 'Hello ' + firstName.value +' ' + lastName.value +'. Thank you for Creating your account with us. Would you like to donate some to the cause?';
     alert('hello ' + firstName.value);
@@ -20,12 +21,12 @@ function createDonate() {
 //    document.body.removeChild(enterEmail);
 //    document.body.removeChild(enterPassword);
     document.body.removeChild(createbutton);
-    const yesDonate = document.createElement('button');
+    yesDonate = document.createElement('button');
     yesDonate.setAttribute('class', 'yesDonate');
     yesDonate.innerHTML = 'YES';
     document.body.appendChild(yesDonate);
     yesDonate.addEventListener('click', startDonate); 
-    const noDonate = document.createElement('button');
+    noDonate = document.createElement('button');
     noDonate.setAttribute('class', 'noDonate');
     noDonate.innerHTML = 'No';
     document.body.appendChild(noDonate);
@@ -57,7 +58,13 @@ function startDonate() {
     submitDonationButton.addEventListener('click', checkAmount);
         function checkAmount () {
             if (donateAmount.value < 5) {
-                donatingForm.innerHTML = 'Hey! please donate more ' + firstName.value;
+                donatingForm.innerHTML = 'Hey! please donate more ' + firstName.value + '.';
+                yesDonate.style.display = 'none';
+                noDonate.style.display = 'none';
+                var acceptdonate = document.createElement('button');
+                acceptdonate.innerHTML = 'okay!';
+                donatingForm.appendChild(acceptdonate);
+                acceptdonate.addEventListener('click', startDonate);
             }
             else if(donateAmount.value > 5) {
                 var receipt = document.createElement('div');
